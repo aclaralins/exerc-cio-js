@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionalidades </title>
+</head>
+<body>
+    <h1>Funções em JavaScript</h1>
+
+    <h2>1. Maior e Menor</h2>
+    <button onclick="maiorMenor()">Executar MAIOR_MENOR</button>
+    <p id="resultado-maior-menor"></p>
+
+    <h2>2. Verificar Vogal</h2>
+    <button onclick="verificarVogal()">Executar VOGAL</button>
+    <p id="resultado-vogal"></p>
+
+    <h2>3. Números Pares no Intervalo</h2>
+    <button onclick="numerosParesIntervalo()">Executar LIMITES</button>
+    <p id="resultado-limites"></p>
+
+    <h2>4. Ordenar Números</h2>
+    <button onclick="ordenarNumeros()">Executar ORDEM</button>
+    <p id="resultado-ordem"></p>
+
+    <h2>5. Verificar Positivo ou Negativo</h2>
+    <button onclick="verificarPositivoNegativo()">Executar POSITIVO_NEGATIVO</button>
+    <p id="resultado-positivo-negativo"></p>
+
+    <h2>6. Verificar Par ou Ímpar</h2>
+    <button onclick="verificarParImpar()">Executar PAR_IMPAR</button>
+    <p id="resultado-par-impar"></p>
+
+    <script>
+    
+        function maiorMenor() {
+            let a = parseInt(prompt("Digite o primeiro número:"));
+            let b = parseInt(prompt("Digite o segundo número:"));
+            let c = parseInt(prompt("Digite o terceiro número:"));
+            let d = parseInt(prompt("Digite o quarto número:"));
+            let e = parseInt(prompt("Digite o quinto número:"));
+
+            let numeros = [a, b, c, d, e];
+            let maior = Math.max(...numeros);
+            let menor = Math.min(...numeros);
+
+            document.getElementById("resultado-maior-menor").innerText = `Maior valor: ${maior}, Menor valor: ${menor}`;
+        }
+
+    
+        function verificarVogal() {
+            let c = prompt("Digite um caractere:");
+
+            function VOGAL(c) {
+                c = c.toLowerCase();
+                return (c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u') ? 1 : 0;
+            }
+
+            let resultado = VOGAL(c);
+            document.getElementById("resultado-vogal").innerText = resultado ? "É uma vogal" : "Não é uma vogal";
+        }
+
+
+        function numerosParesIntervalo() {
+            let li = parseInt(prompt("Digite o limite inferior:"));
+            let ls = parseInt(prompt("Digite o limite superior:"));
+
+            function LIMITES(li, ls) {
+                let pares = [];
+                let soma = 0;
+                for (let i = li + 1; i < ls; i++) {
+                    if (i % 2 === 0) {
+                        pares.push(i);
+                        soma += i;
+                    }
+                }
+                return { pares, soma };
+            }
+
+            let resultado = LIMITES(li, ls);
+            document.getElementById("resultado-limites").innerText = `Números pares: ${resultado.pares.join(', ')}, Somatório: ${resultado.soma}`;
+        }
+
+        function ordenarNumeros() {
+            let a = parseInt(prompt("Digite o primeiro número:"));
+            let b = parseInt(prompt("Digite o segundo número:"));
+            let c = parseInt(prompt("Digite o terceiro número:"));
+
+            function ORDEM(a, b, c) {
+                let numeros = [a, b, c];
+                return numeros.sort((x, y) => x - y);
+            }
+
+            let resultado = ORDEM(a, b, c);
+            document.getElementById("resultado-ordem").innerText = `Números ordenados: ${resultado.join(', ')}`;
+        }
+
+        
+        function verificarPositivoNegativo() {
+            let x = parseInt(prompt("Digite um número:"));
+
+            function POSITIVO_NEGATIVO(x) {
+                return x >= 0;
+            }
+
+            let resultado = POSITIVO_NEGATIVO(x);
+            document.getElementById("resultado-positivo-negativo").innerText = resultado ? "O número é positivo" : "O número é negativo";
+        }
+
+        // Função PAR_IMPAR
+        function verificarParImpar() {
+            let x = parseInt(prompt("Digite um número:"));
+
+            function PAR_IMPAR(x) {
+                return x % 2 === 0;
+            }
+
+            let resultado = PAR_IMPAR(x);
+            document.getElementById("resultado-par-impar").innerText = resultado ? "O número é par" : "O número é ímpar";
+        }
+    </script>
+</body>
+</html>
